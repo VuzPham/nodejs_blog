@@ -36,7 +36,6 @@ app.get('/new', (req, res) => {
 })
 app.get('/search', (req, res) => {   
   res.render('search');
-  console.log(req.query)
 })
 
 // Địa chỉ localhost
