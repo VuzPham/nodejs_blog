@@ -22,12 +22,21 @@ app.set('views', path.join(__dirname, 'resource/views')); // convert lại Path
 //console.log('PATH: ', path.join(__dirname, 'resource/views'))
 
 // Route
+// req = request
+// res = response 
+// app.METHOd(PATH, Handler)
+//* Method: lowdercase
+
 app.get('/', (req, res) => {
   res.render('home');
 })
 
-app.get('/new', (req, res) => {
+app.get('/new', (req, res) => {   
   res.render('news');
+})
+app.get('/search', (req, res) => {   
+  res.render('search');
+  console.log(req.query)
 })
 
 // Địa chỉ localhost
