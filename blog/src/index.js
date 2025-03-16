@@ -6,7 +6,12 @@ const app = express();
 const port = 3001;
 
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.urlencoded({
+  extended:true
+})); // build middleware cầu nối giữa client và controller (form submit lên) FORM HTML
+app.use(express.json()); // code js
+// XML, fetch, axios 
+// GET, POST, ...  
 
 // HTTP Logger
 // Morgan để phát hiện ra log terminal
@@ -16,7 +21,8 @@ app.use(morgan('combined'));
 app.engine('hbs', handlebars.engine({
     extname:'.hbs'
 }));  
-app.set('view engine', 'hbs');
+
+app.set('view engine', 'hbs'); 
 app.set('views', path.join(__dirname, 'resource/views')); // convert lại Path
 
 //console.log('PATH: ', path.join(__dirname, 'resource/views'))
@@ -32,10 +38,15 @@ app.get('/', (req, res) => {
 })
 
 app.get('/new', (req, res) => {   
+  console.log(req.query)
   res.render('news');
 })
 app.get('/search', (req, res) => {   
   res.render('search');
+})
+app.post('/search', (req, res) => {   
+  console.log(req.body)
+  res.send("")
 })
 
 // Địa chỉ localhost
