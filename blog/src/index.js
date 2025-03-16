@@ -5,9 +5,10 @@ const path = require('path')
 const app = express();
 const port = 3001;
 
+const route = require(  './routes')
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({
-  extended:true
+  extended:true  // body-parser
 })); // build middleware cầu nối giữa client và controller (form submit lên) FORM HTML
 app.use(express.json()); // code js
 // XML, fetch, axios 
@@ -24,30 +25,11 @@ app.engine('hbs', handlebars.engine({
 
 app.set('view engine', 'hbs'); 
 app.set('views', path.join(__dirname, 'resource/views')); // convert lại Path
-
 //console.log('PATH: ', path.join(__dirname, 'resource/views'))
 
-// Route
-// req = request
-// res = response 
-// app.METHOd(PATH, Handler)
-//* Method: lowdercase
 
-app.get('/', (req, res) => {
-  res.render('home');
-})
+route(app)
 
-app.get('/new', (req, res) => {   
-  console.log(req.query)
-  res.render('news');
-})
-app.get('/search', (req, res) => {   
-  res.render('search');
-})
-app.post('/search', (req, res) => {   
-  console.log(req.body)
-  res.send("")
-})
 
 // Địa chỉ localhost
 app.listen(port, () => {
