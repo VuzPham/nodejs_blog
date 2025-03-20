@@ -1,12 +1,13 @@
 const Course = require("../models/Course");
+
 class SiteController {
-  async index(req, res) {
+  async index(req, res, next) {
     try {
-      const courses = await Course.find({});
-      res.json(courses);
-      res.render("home");
+      //.lean() trả về một Plain JavaScript Object thay vì Mongoose Document, giúp
+      const courses = await Course.find({}).lean();
+      res.render("home", { courses });
     } catch (err) {
-      res.status(400).json({ error: "error!" });
+      next(err);
     }
   }
 
@@ -16,5 +17,3 @@ class SiteController {
 }
 
 module.exports = new SiteController();
-
-//const newController = require('./NewsController')
