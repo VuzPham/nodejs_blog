@@ -28,6 +28,10 @@ class CouresController {
       res.status(500).send("Lưu khóa học thất bại!");
     }
   }
+  edit(req, res, next) {
+    //.lean() trả về một Plain JavaScript Object thay vì Mongoose Document, giúp
+    res.render("course/courseCreate");
+  }
 }
 
 module.exports = new CouresController();

@@ -7,7 +7,7 @@ const port = 3002;
 
 const route = require("./routes");
 const db = require("./config/db");
-
+// kết nối database
 db.Connect();
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -29,6 +29,10 @@ app.engine(
   "hbs",
   handlebars.engine({
     extname: ".hbs",
+    helpers: {
+      // custom sum trong handle bar
+      sum: (a, b) => a + b,
+    },
   })
 );
 

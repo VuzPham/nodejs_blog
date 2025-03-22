@@ -13,3 +13,6 @@ Mongoose là gì?
 Mongoose là một thư viện ODM (Object Data Modeling) cho MongoDB và Node.js. Nó cung cấp một cách dễ dàng để làm việc 
 với cơ sở dữ liệu MongoDB bằng cách sử dụng các Schema và Model.
 npm install mongoose
+
+Morgan là một middleware ghi log HTTP cho ứng dụng Express. Nó giúp bạn theo dõi và ghi lại các yêu cầu HTTP (request) đến server. 
+Điều này rất hữu ích để giám sát, debug và phân tích hoạt động của ứng dụng.
