@@ -1,0 +1,50 @@
+<div>
+  <h2>Sửa khóa học</h2>
+  <form method="POST" action="/courses/{{courses._id}}?_method=PUT">
+    <div class="mb-3">
+      <label for="courseName" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="courseName"
+        name="name"
+        value="{{courses.name}}"
+        older="Nhập tên khóa học"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea
+        class="form-control"
+        id="description"
+        name="description"
+      >{{courses.description}}</textarea>
+
+    </div>
+    <div class="mb-3">
+      <label for="video / ImageID" class="form-label">Video ID</label>
+      <input
+        type="text"
+        class="form-control"
+        id="video"
+        name="video"
+        value="{{courses.video}}"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="level" class="form-label">Level</label>
+      <select
+        class="form-select"
+        name="level"
+        id="level"
+        aria-label="Default select example"
+      >
+        <option value="Trình độ căn bản">Trình độ căn bản</option>
+        <option value="Trình độ trung bình">Trình độ trung bình</option>
+        <option value="Trình độ nâng cao">Trình độ nâng cao</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>

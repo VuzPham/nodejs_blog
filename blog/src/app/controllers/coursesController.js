@@ -28,9 +28,24 @@ class CouresController {
       res.status(500).send("Lưu khóa học thất bại!");
     }
   }
-  edit(req, res, next) {
-    //.lean() trả về một Plain JavaScript Object thay vì Mongoose Document, giúp
-    res.render("course/courseCreate");
+  //[GET] courses/:id/edit
+  async edit(req, res, next) {
+    try {
+      const courses = await Course.findOne({ _id: req.params.id }).lean();
+      res.render("course/editCreate", { courses });
+    } catch (next) {
+      next(error);
+    }
+  }
+  //[PUT] courses/:id
+  async update(req, res, next) {
+    try {
+      const id = req.params.id;
+      await Course.updateOne({ _id: id }, req.body);
+      res.redirect("/");
+    } catch (error) {
+      next(error);
+    }
   }
 }
 
